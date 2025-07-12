@@ -215,7 +215,7 @@ namespace BLTAdoptAHero
                             {
                                 OnPlayerSide = true,
                                 WithRetinue = true,
-                                AllowWhenDepleted = true,
+                                HealPerSecond = 2,
                                 GoldCost = 0,
                                 PreferredFormation = "Infantry"
                             };
