@@ -1,4 +1,4 @@
-# [Download](https://github.com/Lait96/Bannerlord-Twitch/releases/tag/v1.0.4) | [Installation Guide](https://youtu.be/ATf5zilwNWk)
+# [Download](https://github.com/Lait96/Bannerlord-Twitch/releases/tag/v1.0.6) | [Installation Guide](https://youtu.be/ATf5zilwNWk)
 
 # Bannerlord Twitch (BLT)
 This is a modification for [Mount & Blade II: Bannerlord](https://www.taleworlds.com/en/Games/Bannerlord) that adds Twitch integration to the game. This allows events in a Twitch stream to trigger actions in game, for instance redemption of Channel Point Rewards, or specific chat messages.
