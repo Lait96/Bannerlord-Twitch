@@ -148,6 +148,7 @@
 		<string id="ugFdRADy" text="Rename"/>
 		<string id="TrSSHcbH" text="Lead"/>
 		<string id="mlayrmHr" text="Stats"/>
+		<string id="VB2W7FoL" text="info"/>
 		<string id="NGEyUHsh" text="Clan Management"/>
 		<string id="hz2tRydD" text="Allow viewer to change their clan or make leader decisions"/>
 		<string id="zeD9NYrA" text="Enable joining clans command"/>
@@ -222,7 +223,36 @@
 		<string id="ymJh4yMY" text="create"/>
 		<string id="pumBg7sU" text="lead"/>
 		<string id="ek75vkTT" text="rename"/>
-		<string id="VB2W7FoL" text="stats"/>
+		
+        <!-- Rebel -->
+        <string id="taztq4PM" text="Rebel"/>
+        <string id="jNfiU6Bt" text="Rebel against your lord"/>
+        <string id="Whn2gXwU" text="Price"/>
+        <string id="sUlA28HE" text="The price of the rebellion"/>
+        <string id="EmyPYxym" text="OnlyAgainstPlayer"/>
+        <string id="mcXKSmQu" text="If the rebellion can only occur against the player."/>
+        <string id="Z4vYZzSq" text="Not enough gold !"/>
+        <string id="KuvT6DAO" text="Cannot rebel while not under the player kingdom"/>
+        <string id="dG1tCXE4" text="Can't declare war the player is not the ruler of his kingdom or is not in a kingdom"/>
+        <string id="oVjxkppE" text="Cannot declare war on a member of your clan"/>
+        <string id="ve1C1aCl" text="You already are the ruling clan"/>
+        <string id="I4JTuTy3" text="You separated from {oldBoss} and declared war to his Kingdom"/>
+        <string id="CncsL1ix" text="You cannot rebel because the player is not in a kingdom"/>
+        <string id="Xa83dxVg" text="Wanderers cannot rebel"/>
+        <string id="rnI1oCBk" text="Cannot rebel you are not in a kingdom"/>
+        <string id="sXTHqwAg" text="Cannot rebel you are not the leader of your clan"/>
+        
+        <!-- JoinKingdom -->
+        <string id="vQmXPUc2" text="UserChooseFaction"/>
+        <string id="KjzB7Rvm" text="Is the user able to choose the faction he want to join if disabled default faction is player faction"/>
+        <string id="pR9CDiLB" text="OnlyIndependants"/>
+        <string id="f1rBB354" text="Can heroes already in a kingdom leave it to join the new kingdom"/>
+        <string id="XmRVpiun" text="You are not the leader of your clan"/>
+        <string id="rnjTaxtu" text="Could not find the kingdom or player is not the ruler of a kingdom"/>
+        <string id="LCIqZfrG" text="You are a wanderer you cannot join a kingdom"/>
+        <string id="X7JOfZyK" text="OnlyIndependants is enabled you cannot leave your kingdom to join another"/>
+        <string id="5X6Dfjzp" text="You are now a vassal of the {king} kingdom"/>
+
 
 		<!-- KingdomManagement -->
 		<string id="1yrA4CUf" text="Kingdom Management"/>

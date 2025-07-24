@@ -435,7 +435,7 @@
         <!-- bot reporting for duty! -->
         <string id="SbufvVIR" text="бот сообщает о дежурстве!" original="bot reporting for duty!"/>
         <!-- Type !help for command list -->
-        <string id="vBtkF25N" text="Введите !help для получения списка команд" original="Type !help for command list"/>
+        <string id="vBtkF25N" text="Введите !help для получения списка команд." original="Type !help for command list"/>
         <!-- OneShotParticleEffectItemSource -->
         <!-- (none) -->
         <string id="a8ibMIfH" text="(ничего)" original="(none)"/>
@@ -500,7 +500,7 @@
         <!-- Loaded v{ModVersion} -->
         <string id="45Q44kgm" text="Загружен v{ModVersion}" original="Loaded v{ModVersion}"/>
         <!-- Action Manager initialized -->
-        <string id="5G73vqNS" text="Менеджер действий инициализирован" original="Action Manager initialized"/>
+        <string id="5G73vqNS" text="Диспетчер действий инициализирован" original="Action Manager initialized"/>
         <!-- Bannerlord Twitch Mod WARNING -->
         <string id="PhRzCo9t" text="Bannerlord Twitch Mod ВНИМАНИЕ" original="Bannerlord Twitch Mod WARNING"/>
         <!-- You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less. -->
