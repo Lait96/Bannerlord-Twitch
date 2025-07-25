@@ -88,6 +88,9 @@ namespace BLTAdoptAHero
          LocDescription("{=I4ASwveG}Active hero power: this power will be triggered only when the UseHeroPower action is used by the viewer, via reward or command (i.e. a temporary buff)"),
          PropertyOrder(10), ExpandableObject, Expand, UsedImplicitly]
         public ActivePowerGroup ActivePower { get; set; } = new() { Name = "{=wdCMNOGd}Active Power" };
+
+        [LocDisplayName("{=Rh3cTAVq}Moderator only"), LocCategory("Permissions", "{=kJbOqjr1}Permissions")]
+        public bool ModeratorOnly { get; set; } = false;
         #endregion
 
         #region Public Interface

@@ -115,6 +115,12 @@ namespace BLTAdoptAHero
                           $" {string.Join(" / ", BLTAdoptAHeroModule.HeroClassConfig.ClassNames)}");
                 return;
             }
+            if (newClass.ModeratorOnly && !context.IsModerator && !context.IsBroadcaster)
+            {
+                onFailure("Только модераторы/стример могут выбирать этот класс");
+                return;
+            }
+
 
             int equipmentTier = BLTAdoptAHeroCampaignBehavior.Current.GetEquipmentTier(adoptedHero);
 
