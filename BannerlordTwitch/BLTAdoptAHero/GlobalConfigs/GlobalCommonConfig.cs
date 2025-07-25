@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Cryptography;
 using BannerlordTwitch;
 using BannerlordTwitch.Annotations;
 using BannerlordTwitch.Localization;
@@ -122,6 +123,12 @@ namespace BLTAdoptAHero
          Range(1, 10), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          Document, UsedImplicitly]
         public float SummonCooldownUseMultiplier { get; set; } = 1.1f;
+        [LocDisplayName("AutoSummonSide per hero"),
+         LocCategory("Battle", "Battle"),
+         LocDescription("Сторона для автосуммона (true=с моей, false=с противника) по имени героя"),
+         PropertyOrder(14), Document, UsedImplicitly]
+        public Dictionary<string, bool> AutoSummonSide { get; set; } = new();
+
 
         [LocDisplayName("{=ViLoy0k3}Summon Cooldown Example"),
          LocCategory("Battle", "{=9qAD6eZR}Battle"),
@@ -389,6 +396,11 @@ namespace BLTAdoptAHero
                 Get(defaultSettings).Achievements,
                 (a, b) => a.ID == b.ID
             );
+            var def = Get(defaultSettings);
+            AutoSummonSide ??= new Dictionary<string, bool>();
+            foreach (var kv in def.AutoSummonSide)
+                if (!AutoSummonSide.ContainsKey(kv.Key))
+                    AutoSummonSide[kv.Key] = kv.Value;
         }
         #endregion
 
