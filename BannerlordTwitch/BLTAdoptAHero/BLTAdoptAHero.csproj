@@ -309,6 +309,7 @@
     <Compile Include="Actions\AddGoldToHero.cs" />
     <Compile Include="Actions\ChangeSideCmd.cs" />
     <Compile Include="Actions\EquipItemHandler.cs" />
+    <Compile Include="Actions\ForceBerserkHandler.cs" />
     <Compile Include="Actions\HeroToHeroGold.cs" />
     <Compile Include="Actions\AdoptAHero.cs" />
     <Compile Include="Actions\AttributePoints.cs" />
@@ -344,6 +345,7 @@
     <Compile Include="Behaviors\BLTAdoptAHeroCampaignBehavior.cs" />
     <Compile Include="Behaviors\BLTAdoptAHeroCommonMissionBehavior.cs" />
     <Compile Include="Behaviors\BLTAdoptAHeroCustomMissionBehavior.cs" />
+    <Compile Include="Behaviors\BLTBerserkBehavior.cs" />
     <Compile Include="Behaviors\BLTTournamentBetMissionBehavior.cs" />
     <Compile Include="Behaviors\BLTCustomItemsCampaignBehavior.cs" />
     <Compile Include="Behaviors\BLTHeroPowersMissionBehavior.cs" />
