@@ -236,6 +236,12 @@ namespace BLTAdoptAHero.Actions
             //string disbandCommand = "{=TESTING}disband".Translate();
             string buytitleCommand = "{=moApZJvC}Buy Noble Title".Translate();
 
+            string joinCommand = "{=I2jEHyAY}join".Translate();
+            string createCommand = "{=ymJh4yMY}create".Translate();
+            string leadCommand = "{=pumBg7sU}lead".Translate();
+            string renameCommand = "{=ek75vkTT}rename".Translate();
+            string statsCommand = "{=VB2W7FoL}stats".Translate();
+
             switch (command.ToLower())
             {
                 case var _ when command.ToLower() == joinCommand:
