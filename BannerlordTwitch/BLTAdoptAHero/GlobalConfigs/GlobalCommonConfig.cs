@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Cryptography;
 using BannerlordTwitch;
 using BannerlordTwitch.Annotations;
 using BannerlordTwitch.Localization;
@@ -122,6 +123,12 @@ namespace BLTAdoptAHero
          Range(1, 10), Editor(typeof(SliderFloatEditor), typeof(SliderFloatEditor)),
          Document, UsedImplicitly]
         public float SummonCooldownUseMultiplier { get; set; } = 1.1f;
+        [LocDisplayName("AutoSummonSide per hero"),
+         LocCategory("Battle", "Battle"),
+         LocDescription("Сторона для автосуммона (true=с моей, false=с противника) по имени героя"),
+         PropertyOrder(14), Document, UsedImplicitly]
+        public Dictionary<string, bool> AutoSummonSide { get; set; } = new();
+
 
         [LocDisplayName("{=ViLoy0k3}Summon Cooldown Example"),
          LocCategory("Battle", "{=9qAD6eZR}Battle"),
@@ -389,6 +396,11 @@ namespace BLTAdoptAHero
                 Get(defaultSettings).Achievements,
                 (a, b) => a.ID == b.ID
             );
+            var def = Get(defaultSettings);
+            AutoSummonSide ??= new Dictionary<string, bool>();
+            foreach (var kv in def.AutoSummonSide)
+                if (!AutoSummonSide.ContainsKey(kv.Key))
+                    AutoSummonSide[kv.Key] = kv.Value;
         }
         #endregion
 
@@ -467,6 +479,45 @@ namespace BLTAdoptAHero
                 }
             });
         }
+        #endregion
+        #region Auto Summon
+        [LocDisplayName("{=BLTautoSummonSettings}Auto Summon Settings"),
+         LocCategory("Auto Summon", "{=BLTautoSummon}Auto Summon"),
+         LocDescription("{=BLTautoSummonDesc}Settings for automatic hero summoning"),
+         PropertyOrder(100), UsedImplicitly]
+        public bool AutoSummonExpanded { get; set; } = true;
+
+        [LocDisplayName("{=BLTsummonAllHeroes}Summon All Heroes"),
+         LocCategory("Auto Summon", "{=BLTautoSummon}Auto Summon"),
+         LocDescription("{=BLTsummonAllHeroesDesc}Automatically summon all adopted heroes at battle start"),
+         PropertyOrder(101), UsedImplicitly]
+        public bool AutoSummonAll { get; set; }
+
+        [LocDisplayName("{=BLTsummonSpecificHeroes}Summon Specific Heroes"),
+         LocCategory("Auto Summon", "{=BLTautoSummon}Auto Summon"),
+         LocDescription("{=BLTsummonSpecificHeroesDesc}Automatically summon only selected heroes"),
+         PropertyOrder(102), UsedImplicitly]
+        public bool AutoSummonSpecific { get; set; }
+
+        [LocDisplayName("{=BLTheroesToSummon}Heroes To Summon"),
+         LocCategory("Auto Summon", "{=BLTautoSummon}Auto Summon"),
+         LocDescription("{=BLTheroesToSummonDesc}Comma-separated list of hero names to auto-summon (if 'Summon Specific Heroes' is enabled)"),
+         PropertyOrder(103), UsedImplicitly]
+        public string AutoSummonHeroesList { get; set; } = "";
+
+        /* Commented out as requested
+        [LocDisplayName("{=BLTresummonOnDeath}Re-summon On Death"),
+         LocCategory("Auto Summon", "{=BLTautoSummon}Auto Summon"),
+         LocDescription("{=BLTresummonOnDeathDesc}Automatically re-summon heroes if they die during battle"),
+         PropertyOrder(104), UsedImplicitly]
+        public bool AutoResummonOnDeath { get; set; } = true;
+
+        [LocDisplayName("{=BLTautoUseUltimate}Auto Use Ultimate"),
+         LocCategory("Auto Summon", "{=BLTautoSummon}Auto Summon"),
+         LocDescription("{=BLTautoUseUltimateDesc}Automatically use ultimate ability for summoned heroes"),
+         PropertyOrder(105), UsedImplicitly]
+        public bool AutoUseUltimate { get; set; } = true;
+        */
         #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;

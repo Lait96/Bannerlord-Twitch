@@ -404,5 +404,21 @@
         <string id="bNX0NiQ9" text="продал {ItemName} за {ItemValue}{GoldIcon} (не требуется)" original="sold {ItemName} for {ItemValue}{GoldIcon} (not needed)"/>
         <!-- received {ItemName} (put in storage) -->
         <string id="R7VwlLzg" text="получил {ItemName} (сдано на хранение)" original="received {ItemName} (put in storage)"/>
+		<!-- Auto Summon Settings -->
+		<string id="BLTautoSummon" text="Автопризыв" original="Auto Summon"/>
+		<string id="BLTautoSummonSettings" text="Настройки автопризыва" original="Auto Summon Settings"/>
+		<string id="BLTautoSummonDesc" text="Настройки автоматического призыва героев" original="Settings for automatic hero summoning"/>
+		<string id="BLTsummonAllHeroes" text="Призывать всех героев" original="Summon All Heroes"/>
+		<string id="BLTsummonAllHeroesDesc" text="Автоматически призывать всех принятых героев в начале битвы" original="Automatically summon all adopted heroes at battle start"/>
+		<string id="BLTsummonSpecificHeroes" text="Призывать выбранных героев" original="Summon Specific Heroes"/>
+		<string id="BLTsummonSpecificHeroesDesc" text="Автоматически призывать только выбранных героев" original="Automatically summon only selected heroes"/>
+		<string id="BLTheroesToSummon" text="Герои для призыва" original="Heroes To Summon"/>
+		<string id="BLTheroesToSummonDesc" text="Список имён героев для автопризыва (через запятую, если включен 'Призывать выбранных героев')" original="Comma-separated list of hero names to auto-summon (if 'Summon Specific Heroes' is enabled)"/>
+		<!--
+        <string id="BLTresummonOnDeath" text="Повторный призыв при смерти" original="Re-summon On Death"/>
+        <string id="BLTresummonOnDeathDesc" text="Автоматически призывать героев снова, если они погибнут в бою" original="Automatically re-summon heroes if they die during battle"/>
+        <string id="BLTautoUseUltimate" text="Авто-ультимейт" original="Auto Use Ultimate"/>
+        <string id="BLTautoUseUltimateDesc" text="Автоматически использовать ультимейт-способность для призванных героев" original="Automatically use ultimate ability for summoned heroes"/>
+        -->
     </strings>
 </base>

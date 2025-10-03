@@ -273,7 +273,23 @@
         <string id="kYFdZ8Yx" text="Заменяет всю броню на броню фиксированного уровня в зависимости от культуры, если это возможно (уровень указан ниже Нормализованным уровнем брони)" original="Replaces all armor with fixed tier armor, based on Culture if possible (tier specified by Normalized Armor Tier below)"/>
         <!-- Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled -->
         <string id="HnqCyrDD" text="Уровень брони для всех участников (от 1 до 6), если включена нормализация брони." original="Armor tier to set all contestants to (1 to 6), if Normalize Armor is enabled"/>
-        <!-- Randomizes the weapons used in each round, weighted based on the classes of the participants -->
+		<!-- Disable unarmed combat in BLT tournaments -->
+		<string id="noFistDesc" text="Отключить кулачный бой." original="Disable unarmed combat in BLT tournaments"/>
+		<!-- Disable all bows, crossbows, throwing weapons and other ranged -->
+		<string id="noRangedDesc" text="Отключить всё стрелковое оружие (луки, арбалеты, метательное и добавленное модами)." original="Disable all bows, crossbows, throwing weapons and other ranged"/>
+		<!-- Set custom ammo count for ranged weapons -->
+		<string id="rangedAmmoDesc" text="Задать своё количество боеприпасов для стрелкового оружия. Значение 0 - оставить количество по умолчанию" original="Set custom ammo count for ranged weapons"/>
+		<!-- No Fists -->
+		<string id="noFist" text="Без рукопашки" original="No Fists"/>
+		<!-- No Ranged Weapons -->
+		<string id="noRanged" text="Без дальнего оружия" original="No Ranged Weapons"/>
+		<!-- Ranged Ammo Count -->
+		<string id="rangedAmmo" text="Количество боеприпасов" original="Ranged Ammo Count"/>
+		<!-- Add BLT Copies -->
+		<string id="addBltCopies" text="Добавлять копии BLT" original="Add BLT Copies"/>
+		<!-- Add BLT Copies Description -->
+		<string id="addBltCopiesDesc" text="Вместо рандомных бойцов добавлять копии BLT персонажей. Те, кто сами не записались на турнир, награду не получат." original="Instead of random troops, add copies of BLT viewers. Those who didn’t sign up won’t get rewards."/>
+		<!-- Randomizes the weapons used in each round, weighted based on the classes of the participants -->
         <string id="oSCPOoqi" text="Рандомизирует оружие, используемое в каждом раунде, с учетом классов участников." original="Randomizes the weapons used in each round, weighted based on the classes of the participants"/>
         <!-- Applies skill debuffs to previous tournament winners -->
         <string id="FrloGGew" text="Применяет дебаффы навыков к предыдущим победителям турниров" original="Applies skill debuffs to previous tournament winners"/>

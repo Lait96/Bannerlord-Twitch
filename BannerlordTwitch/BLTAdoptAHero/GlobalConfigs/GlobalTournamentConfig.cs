@@ -57,6 +57,12 @@ namespace BLTAdoptAHero
          LocDescription("{=o5aH9rTO}Tournament kills / deaths won't be counted towards achievements or kill streaks"),
          PropertyOrder(3), Document, UsedImplicitly]
         public bool DisableTrackingKillsTournament { get; set; } = true;
+        
+        [LocDisplayName("{=addBltCopies}Add BLT Copies"),
+         LocCategory("General", "{=C5T5nnix}General"),
+         LocDescription("{=addBltCopiesDesc}Instead of random troops, add copies of BLT viewers. Those who didn’t sign up won’t get rewards."),
+         PropertyOrder(4), UsedImplicitly, Document]
+        public bool AddBltCopies { get; set; } = false;
         #endregion
 
         #region Equipment
@@ -89,6 +95,25 @@ namespace BLTAdoptAHero
          LocDescription("{=oSCPOoqi}Randomizes the weapons used in each round, weighted based on the classes of the participants"),
          PropertyOrder(6), UsedImplicitly, Document]
         public bool RandomizeWeaponTypes { get; set; } = true;
+        [LocDisplayName("{=noFist}No Fists"),
+         LocCategory("Equipment", "{=i7ZDVTaw}Equipment"),
+         LocDescription("{=noFistDesc}Disable unarmed combat in BLT tournaments"),
+         PropertyOrder(4), UsedImplicitly, Document]
+        public bool NoFists { get; set; }
+
+        [LocDisplayName("{=noRanged}No Ranged Weapons"),
+         LocCategory("Equipment", "{=i7ZDVTaw}Equipment"),
+         LocDescription("{=noRangedDesc}Disable all bows, crossbows, throwing weapons and other ranged"),
+         PropertyOrder(5), UsedImplicitly, Document]
+        public bool NoRanged { get; set; }
+
+        [LocDisplayName("{=rangedAmmo}Ranged Ammo Count"),
+         LocCategory("Equipment", "{=i7ZDVTaw}Equipment"),
+         LocDescription("{=rangedAmmoDesc}Set custom ammo count for ranged weapons. Value 0 keeps the default amount."),
+         PropertyOrder(6), Range(0, 999), UsedImplicitly, Document]
+        public int RangedAmmoCount { get; set; } = 0;
+
+
         #endregion
 
         #region Balancing

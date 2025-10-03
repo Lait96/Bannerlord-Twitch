@@ -45,19 +45,7 @@
         <string id="Bi19tTPj" text="Максимальное количество унаследованных настраиваемых предметов" original="Maximum Inherited Custom Items"/>
         <!-- How many custom items can be inherited -->
         <string id="tFolfAOn" text="Сколько настраиваемых предметов можно унаследовать" original="How many custom items can be inherited"/>
-		<!-- ClanManagement -->
-		<string id="pkzDqw18" text="Недопустимое или пустое действие клана, попробуйте (вступить/создать/возглавить/переименовать/стат)" original="Invalid or empty clan action, try (join/create/lead/rename/stats)"/>
-		<!-- Translation of clan management chat commands -->
-		<string id="q5JhpNMF" text="Вступить" original="Join"/>
-		<string id="9lAIycwE" text="Создать" original="Create"/>
-		<string id="TrSSHcbH" text="Возглавить" original="Lead"/>
-		<string id="ugFdRADy" text="Переименовать" original="Rename"/>
-		<string id="mlayrmHr" text="Стат" original="Stats"/>
-		<string id="I2jEHyAY" text="вступить" original="join"/>
-		<string id="ymJh4yMY" text="создать" original="create"/>
-		<string id="pumBg7sU" text="возглавить" original="lead"/>
-		<string id="ek75vkTT" text="переименовать" original="rename"/>
-		<string id="VB2W7FoL" text="стат" original="stats"/>		
+			
         <!-- Subscriber Only -->
         <string id="O4DGlP9Z" text="Только подписчик" original="Subscriber Only"/>
         <!-- Only subscribers can adopt -->
@@ -392,7 +380,7 @@
         <!-- {Age} yrs -->
         <string id="4TVRrlOw" text="{Age} лет" original="{Age} yrs"/>
         <!-- {HP} / {MaxHP} HP -->
-        <string id="jY2QJdA3" text="{HP} / {MaxHP} HP" original="{HP} / {MaxHP} HP"/>
+        <string id="jY2QJdA3" text="💚{HP} / {MaxHP} HP💚" original="{HP} / {MaxHP} HP"/>
         <!-- Last seen near {Place} -->
         <string id="B2xDasDx" text="Замечали около {Place}" original="Last seen near {Place}"/>
         <!-- [LVL] -->
@@ -414,13 +402,13 @@
         <!-- [STORED] -->
         <string id="U4HnxTCj" text="[ХРАНИТСЯ]" original="[STORED]"/>
         <!-- [RETINUE] -->
-        <string id="hMBF1zLr" text="[СВИТА]" original="[RETINUE]"/>
+        <string id="hMBF1zLr" text="🧑‍🤝‍🧑СВИТА" original="[RETINUE]"/>
         <!-- (nothing) -->
         <string id="4IOefqsW" text="(ничего)" original="(nothing)"/>
         <!-- {RetinueCount} (avg Tier {Tier}) -->
-        <string id="XE2QRhyz" text="{RetinueCount} (сред Ур {Tier})" original="{RetinueCount} (avg Tier {Tier})"/>
+        <string id="XE2QRhyz" text="кол-во: {RetinueCount} сред Ур={Tier}" original="{RetinueCount} (avg Tier {Tier})"/>
         <!-- [ACHIEV] -->
-        <string id="giS3vq1V" text="[ДОСТИЖ]" original="[ACHIEV]"/>
+        <string id="giS3vq1V" text="🎖️Достижения🎖️" original="[ACHIEV]"/>
         <!-- K -->
         <string id="ADjhFwlz" text="У" original="K"/>
         <!-- D -->
@@ -807,5 +795,197 @@
 		<string id="lJXxLdFz" text="Пожалуйста, введите имя лидера, которого вы хотите усыновить." original="Please enter the name of the leader you wish to adopt"/>
 		<!-- Error could not find a clan with the name {clanName} -->
 		<string id="bzsT7oy0" text="Ошибка: не удалось найти клан с названием {clanName}." original="Error could not find a clan with the name {clanName}"/>
+
+		<!-- HeroFeatures -->
+		<string id="OoGyH5cw" text="Особенности героя" original="Hero Features"/>
+		<string id="Ia7ACrTK" text="Разрешить просматривать и настраивать характеристики героя" original="Allow viewer to adjust characteristics about their Hero"/>
+		<string id="KjuNxda1" text="Включить изменение пола героя" original="Change Hero Gender Enabled"/>
+		<string id="puULf6Ca" text="Разрешить возможность менять пол" original="Enable ability to change gender"/>
+		<string id="Tt3LPI6w" text="Стоимость изменения пола в золоте" original="Change Hero Gender Gold Cost"/>
+		<string id="oyxJVLCx" text="Цена за смену пола" original="Cost of changing gender"/>
+		<string id="jW4WABm2" text="Только для созданных героев?" original="Only on created heroes?"/>
+		<string id="guSdSDEy" text="Разрешать менять пол только для созданных героев, а не для усыновлённых" original="Only allow swapping gender for heroes that are created, instead of adopted"/>
+		<string id="EyBgfdPz" text="Вы не можете управлять героем, так как активна миссия!" original="You cannot manage your hero, as a mission is active!"/>
+		<string id="KIaeC6OH" text="Вы не можете управлять героем, так как вы в плену!" original="You cannot manage your hero, as you are a prisoner!"/>
+		<string id="rS4Ykysf" text="Изменение пола героя отключено" original="Changing heroes gender is not enabled"/>
+		<string id="XfKeCtCR" text="Изменение пола доступно только для созданных героев" original="Changing heroes gender is only enabled for created heroes"/>
+		<string id="LbXx5Jxt" text="У вас недостаточно золота ({price}) для смены пола" original="You do not have enough gold ({price}) to change gender"/>
+		<string id="BE1uGwVi" text="Ваш герой уже женского пола" original="Your hero is already female"/>
+		<string id="kANu9D6d" text="Ваш герой сменил пол на женский" original="Your hero has changed their gender to female"/>
+		<string id="byvm3h6C" text="{Name} сменил пол на женский!" original="{Name} has changed their gender to female!"/>
+		<string id="aG7rIjnV" text="Ваш герой уже мужского пола" original="Your hero is already male"/>
+		<string id="FlGjts5K" text="Ваш герой сменил пол на мужской" original="Your hero has changed their gender to male"/>
+		<string id="MgcrSo56" text="{Name} сменил пол на мужской!" original="{Name} has changed their gender to male!"/>
+		<string id="rPqyzuoG" text="Недопустимый пол (мужской/женский)" original="Invalid gender (male/female)"/>
+		<string id="6t9UWDR2" text="Использование gender male\female" original="Invalid action"/>
+		
+		<!-- Rejuvenate -->
+		<string id="YDcnEEbS" text="Омолодить" original="Rejuvenate"/>
+		<string id="22nn0uG5" text="Омолодите вашего героя" original="Rejuvenate your hero"/>
+		<string id="7WIjNgF2" text="Цена" original="Price"/>
+		<string id="QaK58Z3j" text="Цена за омоложение" original="The price to pay to rejuvenate"/>
+		<string id="eyrNUsxM" text="Возраст" original="Age"/>
+		<string id="oyzYoByT" text="Количество лет для омоложения" original="The amount of years you will rejuvenate"/>
+		<string id="wkhZ6q7b" text="Вы не можете омолодиться, пока активна миссия!" original="You cannot rejuvenate, as a mission is active!"/>
+		<string id="Z4vYZzSq" text="Недостаточно золота!" original="Not enough gold !"/>
+		<string id="yWo2v3yu" text="Вы не можете омолодиться ниже возраста ребенка" original="You cannot rejuvenate bellow child age"/>
+		<string id="XidEZXAO" text="Вы стали моложе на {Age}." original="Your rejuvenated of {Age} years you are now {newAge}"/>
+
+		<!-- Translation of clan management chat commands -->
+		<string id="q5JhpNMF" text="Вступить" original="Join"/>
+		<string id="9lAIycwE" text="Создать" original="Create"/>
+		<string id="TrSSHcbH" text="Возглавить" original="Lead"/>
+		<string id="ugFdRADy" text="Переименовать" original="Rename"/>
+		<string id="mlayrmHr" text="Стат" original="Stats"/>
+		<string id="VB2W7FoL" text="инфо" original="Stats"/>
+		<string id="I2jEHyAY" text="вступить" original="join"/>
+		<string id="ymJh4yMY" text="создать" original="create"/>
+		<string id="pumBg7sU" text="возглавить" original="lead"/>
+		<string id="ek75vkTT" text="переименовать" original="rename"/>
+		
+		<!-- описание клана -->
+		<string id="yPeUCq8t" text="Вы не в клане" original="You are not in a clan"/>
+		<string id="Ki8jvwkw" text="Название клана: {name} | " original="Clan Name: {name} | "/>
+		<string id="sZcYhSOL" text="Лидер: {leader} | " original="Leader: {leader} | "/>
+		<string id="ch83d8zT" text="Королевство: {kingdom} | " original="Kingdom: {kingdom} | "/>
+		<string id="Sg11nEUe" text="Уровень: {tier} | " original="Tier: {tier} | "/>
+        <string id="ZFGikYn8" text="Сила: {strength} | " original="Strength: {strength} | "/>
+		<string id="eHJYAZha" text="Кол-во участников: {members}" original="Members: {members}"/>
+		<string id="xMSAI7HK" text="Ваш клан {clanName}" original="Your clan is {clanName}"/>  
+		
+		<!-- ClanManagement -->
+		<string id="pYjIUlTE" text="Включено" original="Enabled"/>
+		<string id="NGEyUHsh" text="Управление кланом" original="Clan Management"/>
+		<string id="hz2tRydD" text="Разрешить зрителю менять свой клан или принимать решения о лидере" original="Allow viewer to change their clan or make leader decisions"/>
+		<string id="zeD9NYrA" text="Включить команду присоединения к кланам" original="Enable joining clans command"/>
+		<string id="jwSrIS8n" text="Максимум героев" original="Max Heroes"/>
+		<string id="nC2MvvB6" text="Максимальное количество героев (включая NPC) до присоединения запрещено" original="Maximum heroes (includes NPC's) before join is disallowed"/>
+		<string id="d5WMYSvO" text="Стоимость" original="Gold Cost"/>
+		<string id="bxuW8r3J" text="Стоимость вступления в клан" original="Cost of joining a clan"/>
+		<string id="k3ihPbMl" text="Клан стримера?" original="Players Clan?"/>
+		<string id="KA3w5CSP" text="Разрешить зрителям присоединяться к клану игроков" original="Allow viewers to join the players clan"/>
+		<string id="x5aY2Ryn" text="Включить команду создания кланов" original="Enable creating clans command"/>
+		<string id="KvYA5eAy" text="Стоимость создания клана" original="Cost of creating a clan"/>
+		<string id="KQWPJonx" text="Включить команду ведущих кланов" original="Enable leading clans command"/>
+		<string id="7Zqi5Ehg" text="Стоимость руководства кланом" original="Cost of leading a clan"/>
+		<string id="xcThCwjr" text="Бросьте вызов героям" original="Challenge Heroes"/>
+		<string id="LWj6LPyH" text="Переключить, возможна ли попытка возглавить клан, уже возглавляемый героем BLT - случайный шанс победы, основанный на разнице навыков" original="Toggle whether or not trying to lead a clan already led by a BLT hero is possible - random chance they win based on skill difference"/>
+		<string id="NhJk9hgu" text="Включить команду переименования кланов" original="Enable renaming clans command"/>
+		<string id="d2H2BrIG" text="Стоимость переименования клана" original="Cost of renaming a clan"/>
+		<string id="vNGlBZUB" text="Включить команду статистики" original="Enable stats command"/>
+		<string id="MPTOZqMS" text="Вы не можете управлять своим кланом, так как миссия активна!" original="You cannot manage your clan, as a mission is active!"/>
+		<string id="oxNqBy4k" text="Ты не можешь управлять своим кланом, так как ты пленник!" original="You cannot manage your clan, as you are a prisoner!"/>
+		<string id="pkzDqw18" text="Недопустимая команда или клан пустой. Используйте (вступить/создать/возглавить/переименовать/инфо)" original="Invalid or empty clan action, try (join/create/lead/rename/stats)"/>
+		<string id="VupTnRNX" text="Вступление в кланы отключено" original="Joining clans is disabled"/>
+		<string id="OrBEbanC" text="Вы не можете присоединиться к другому клану, так как являетесь лидером своего клана." original="You cannot join another clan as you are the leader of your clan"/>
+		<string id="3ktTpCyC" text="Использование !клан вступить название клана" original="(join) (clan name)"/>
+		<string id="xylTvKyE" text="Не удалось найти клан с таким названием" original="Could not find the clan with the name {name}"/>
+		<string id="aoxW7fmn" text="Клан {name} переполнен" original="The clan {name} is full"/>
+		<string id="jptOPf36" text="Вступление в клан стримера отключено" original="Joining the players clan is disabled"/>
+		<string id="T7U1Piwx" text="Присоединился к клану" original="Joined clan {name}"/>
+		<string id="AtU1Piwx" text="Недостаточно золота для вступления в клан ({price})" original="You do not have enough gold ({price}) to join a clan"/>
+		<string id="WseRTV8W" text="{heroName} Присоединился к клану {clanName}!" original="{heroName} has joined clan {clanName}!"/>
+		<string id="drmqcbE2" text="Создание кланов отключено" original="Creating clans is disabled"/>
+		<string id="zZYHVBZ6" text="Вы не можете создать другой клан, так как являетесь лидером своего клана." original="You cannot create another clan as you are the leader of your clan"/>
+		<string id="6vTxAMVx" text="Использование !клан создать название" original="(create) (clan name)"/>
+		<string id="Aae45bKp" text="Клан с названием {name} уже существует" original="A clan with the name {name} already exists"/>
+		<string id="wwdny8Wo" text="Недостаточно золота для создания клана ({price})" original="You do not have enough gold ({price}) to create a clan"/>
+		<string id="omDrEeDx" text="Создал и возглавил клан {name}" original="Created and leading clan {name}"/>
+		<string id="TsmDfvuz" text="{heroName} создал и возглавляет клан {clanName}!" original="{heroName} has created and is leading clan {clanName}!"/>
+		<string id="OVxeTkYW" text="Лидерство кланов отключено" original="Leading clans is disabled"/>
+		<string id="xH2geJ28" text="Вы не в клане" original="You are not in a clan"/>
+		<string id="jGg5q1JD" text="Вы не можете возглавить клан игрока" original="You cannot lead the players clan"/>
+		<string id="cRpqnI3B" text="Вы уже являетесь лидеромвашего клана" original="You are already the leader of your clan"/>
+		<string id="A2KOZv2B" text="Недостаточно денег чтобы стать лидером клана ({price})" original="You do not have enough gold ({price}) to lead a clan"/>
+		<string id="L7PFIoD6" text="Отключено управление кланами, возглавляемыми другими героями BLT." original="Leading clans led by other BLT Heroes is disabled"/>
+		<string id="PlG3BI1y" text="Вас победил в битве {oldLeader}, и вы не смогли возглавить свой клан." original="You have been bested in battle by {oldLeader} and failed to lead your clan"/>
+		<string id="ZCYqf89T" text="{heroName} узурпировал {oldLeader} и теперь возглавляет клан {clanName}!" original="{heroName} has usurped {oldLeader} and is now leading clan {clanName}!"/>
+		<string id="nDZKenCx" text="Вы успешно взяли на себя руководство своим кланом." original="You have successfully taken over the leadership of your clan"/>
+		<string id="MbMibbNm" text="Теперь вы лидер своего клана." original="You are now the leader of your clan"/>
+		<string id="Zc5EPvQU" text="{heroName} теперь глава клана {clanName}!" original="{heroName} is now leading clan {clanName}!"/>
+		<string id="4pDk2rNm" text="Переименование кланов отключено" original="Renaming clans is disabled"/>
+		<string id="vjHYEbRR" text="Использование !клан переименовать название" original="(rename) (clan name)"/>
+		<string id="jQZ93EID" text="Вы не лидер вашего клана" original="You are not the leader of your clan"/>
+		<string id="Dx3HtU6C" text="У вас недостаточно денег для переименования клана ({price})" original="You do not have enough gold ({price}) to rename a clan"/>
+		<string id="hNtBu8rx" text="Новое название клана {name}" original="Renamed clan to {name}"/>
+		<string id="d3tUyvv3" text="{heroName} переименовал клан {oldName} в {clanName}!" original="{heroName} has renamed clan {oldName} to {clanName}!"/>
+		<string id="9XKKVMKf" text="Информация о кланах откюлчена" original="Clan stats is disabled"/>
+
+		<!-- Rebel -->
+		<string id="taztq4PM" text="Мятеж" original="Rebel"/>
+		<string id="jNfiU6Bt" text="Мятеж против вашего лорда" original="Rebel against your lord"/>
+		<string id="Whn2gXwU" text="Цена" original="Price"/>
+		<string id="sUlA28HE" text="Цена мятежа" original="The price of the rebellion"/>
+		<string id="EmyPYxym" text="Только против игрока" original="OnlyAgainstPlayer"/>
+		<string id="mcXKSmQu" text="Мятеж может происходить только против игрока." original="If the rebellion can only occur against the player."/>
+		<string id="Z4vYZzSq" text="Недостаточно золота !" original="Not enough gold !"/>
+		<string id="KuvT6DAO" text="Невозможно поднять мятеж, пока вы не в королевстве игрока" original="Cannot rebel while not under the player kingdom"/>
+		<string id="dG1tCXE4" text="Невозможно объявить войну, так как игрок не является правителем своего королевства или не находится в королевстве" original="Can't declare war the player is not the ruler of his kingdom or is not in a kingdom"/>
+		<string id="oVjxkppE" text="Невозможно объявить войну члену вашего клана" original="Cannot declare war on a member of your clan"/>
+		<string id="ve1C1aCl" text="Вы уже являетесь правящим кланом" original="You already are the ruling clan"/>
+		<string id="I4JTuTy3" text="Вы отделились от {oldBoss} и объявили войну его королевству" original="You separated from {oldBoss} and declared war to his Kingdom"/>
+		<string id="CncsL1ix" text="Вы не можете поднять мятеж, потому что игрок не в королевстве" original="You cannot rebel because the player is not in a kingdom"/>
+		<string id="Xa83dxVg" text="Странники не могут поднять мятеж" original="Wanderers cannot rebel"/>
+		<string id="rnI1oCBk" text="Невозможно поднять мятеж, вы не в королевстве" original="Cannot rebel you are not in a kingdom"/>
+		<string id="sXTHqwAg" text="Невозможно поднять мятеж, вы не лидер вашего клана" original="Cannot rebel you are not the leader of your clan"/>
+
+		<!-- JoinKingdom -->
+		<string id="vQmXPUc2" text="Выбор фракции пользователем" original="UserChooseFaction"/>
+		<string id="KjzB7Rvm" text="Может ли пользователь выбрать фракцию для присоединения, если отключено — по умолчанию фракция — это фракция игрока" original="Is the user able to choose the faction he want to join if disabled default faction is player faction"/>
+		<string id="pR9CDiLB" text="Только независимые" original="OnlyIndependants"/>
+		<string id="f1rBB354" text="Могут ли герои, уже находящиеся в королевстве, покинуть его для присоединения к новому" original="Can heroes already in a kingdom leave it to join the new kingdom"/>
+		<string id="XmRVpiun" text="Вы не лидер вашего клана" original="You are not the leader of your clan"/>
+		<string id="rnjTaxtu" text="Не удалось найти королевство или игрок не является правителем королевства" original="Could not find the kingdom or player is not the ruler of a kingdom"/>
+		<string id="LCIqZfrG" text="Вы странник, вы не можете присоединиться к королевству" original="You are a wanderer you cannot join a kingdom"/>
+		<string id="X7JOfZyK" text="Включен только режим независимых, вы не можете покинуть ваше королевство для присоединения к другому" original="OnlyIndependants is enabled you cannot leave your kingdom to join another"/>
+		<string id="5X6Dfjzp" text="Теперь вы вассал королевства {king}" original="You are now a vassal of the {king} kingdom"/>
+
+		<!-- KingdomManagement -->
+		<string id="1yrA4CUf" text="Управление королевством" original="Kingdom Management"/>
+		<string id="4vQgxBGr" text="Разрешить зрителю менять королевство своего клана или принимать решения о лидере" original="Allow viewer to change their clans Kingdom or make leader decisions"/>
+		<string id="583Jcer2" text="Разрешить команду для вступления в королевство" original="Enable joining kingdoms command"/>
+		<string id="5KY2Vdfx" text="Максимум кланов" original="Max Clans"/>
+		<string id="5WqAw2LI" text="Максимальное количество кланов (включая NPC) до запрета на присоединение" original="Maximum clans (includes NPC's) before join is disallowed"/>
+		<string id="6PUxQuLg" text="Стоимость" original="Gold Cost"/>
+		<string id="6fkIuAEC" text="Стоимость вступления в королевство" original="Cost of joining a kingdom"/>
+		<string id="7KEOBexC" text="Королевство стримера?" original="Players Kingdom?"/>
+		<string id="7ivCO9JL" text="Разрешить игрокам вступать в королевство стримера" original="Allow viewers to join the players kingdom"/>
+		<string id="88BqaM2k" text="Включить просмотр клана, восставшего против своего королевства" original="Enable viewer clan rebelling against their kingdom"/>
+		<string id="97hqQyTG" text="Цена начала восстания" original="Cost of starting a rebellion"/>
+		<string id="9rmGjERc" text="Минимальный уровень клана" original="Minimum Clan Tier"/>
+		<string id="ANLOgDZU" text="Минимальный уровень клана для начала восстания" original="Minimum clan tier to start a rebellion"/>
+		<string id="CFBJIpux" text="Включить команду статистики" original="Enable stats command"/>
+		<string id="CRCwDnag" text="Вы не можете управлять своим королевством, так как миссия активна!" original="You cannot manage your kingdom, as a mission is active!"/>
+		<string id="Cjm2sCjR" text="Вы не можете управлять своим королевством, так как вы пленник!" original="You cannot manage your kingdom, as you are a prisoner!"/>
+		<string id="DYgac2Ut" text="Вы не можете управлять своим королевством, потому что вы не в клане" original="You cannot manage your kingdom, as you are not in a clan"/>
+		<string id="EJ4Pd2Lg" text="У вашего клана нет королевства" original="Your clan is not in a Kingdom"/>
+		<string id="EkmpJvML" text="Ваш клан {clanName} является частью королевства{kingdomName}" original="Your clan {clanName} is a member of the kingom {kingdomName}"/>
+		<string id="FFxXuX5i" text="Недопустимоедействие или королевство отсутствует, попробуйте (join/rebel/stats)" original="Invalid or empty kingdom action, try (join/rebel/stats)"/>
+		<string id="FHPbdYpk" text="Вступление в королевство отключено" original="Joining kingdoms is disabled"/>
+		<string id="GEGrsLPm" text="Ваш клан уже находится в королевстве, чтобы покинуть его, вам придется восстать против них." original="Your clan is already in a kingdom, in order to leave you must rebel against them"/>
+		<string id="HS14GdUa" text="Ты не можешь управлять своим королевством, поскольку ты не лидер своего клана!" original="You cannot manage your kingdom, as you are not your clans leader!"/>
+		<string id="IKXbDYU8" text="Использование !вступить название_королевства" original="(join) (kingdom name)"/>
+		<string id="JdZ2CelP" text="Не удалось найти королевство с названием {name}" original="Could not find the kingdom with the name {name}"/>
+		<string id="KFzBPUry" text="Королевство {name} заполнен!" original="The kingdom {name} is full"/>
+		<string id="L4dccNIC" text="Присоединение к королевству игроков отключено." original="Joining the players kingdom is disabled"/>
+		<string id="LMAOSWIl" text="У вас недостаточно золота для присоединения к королевству ({price})" original="You do not have enough gold ({price}) to join a kingdom"/>
+		<string id="LSea9bms" text="Ваш клан {clanName} теперь часть королевства {kingdomName}"  original="Your clan {clanName} has joined the kingom {kingdomName}"/>
+		<string id="Lid1aV3k" text="{clanName} присоединился вступил в королевство {kingdomName}!" original="{clanName} has joined kingdom {kingdomName}!"/>
+		<string id="MRstTtQa" text="Клановый мятеж отключен" original="Clan rebellion is disabled"/>
+		<string id="NbvwN9z3" text="Ваш клан не находится в королевстве" original="Your clan is not in a kingdom"/>
+		<string id="Nzm5bI4I" text="Вы не можете возглавить восстание против своего королевства, поскольку вы не являетесь лидером своего клана!" original="You cannot lead a rebellion agaisnt your kingdom, as you are not your clans leader!"/>
+		<string id="OgwKEDza" text="Вы уже глава клана." original="You already are the ruling clan"/>
+		<string id="Ok94bnhi" text="Ваш клан недостаточно высок, чтобы начать мятеж" original="Your clan is not high enough tier to rebel"/>
+		<string id="PHGPejab" text="Недостаточно золото для начала мятежа ({price})" original="You do not have enough gold ({price}) to start a rebellion"/>
+		<string id="PHuBl5tJ" text="Ваш клан восстал против {oldBoss} и объявил войну" original="Your clan has rebelled against {oldBoss} and declared war"/>
+		<string id="RtwwHrgB" text="Статистика королевства отключена" original="Kingdom stats is disabled"/>
+		<string id="RvkJO6J9" text="Ваш клан не находится в королевстве" original="Your clan is not in a kingdom"/>
+		<string id="SVlrGgol" text="Королевство : {name} | " original="Kingdom Name: {name} | "/>
+		<string id="Ss588M9l" text="Правящий клан: {rulingClan} | " original="Ruling Clan: {rulingClan} | "/>
+		<string id="T1FhhCH9" text="Количество кланов: {clanCount} | " original="Clan Count: {clanCount} | "/>
+		<string id="TUOmh7NY" text="Сила: {сила} | " original="Strength: {strength} | "/>
+		<string id="qgKGFYNu" text="Мятеж" original="Rebel"/>
+		
+		
     </strings>
 </base>

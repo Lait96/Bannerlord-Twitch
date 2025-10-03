@@ -15,6 +15,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.TournamentGames;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
+using TaleWorlds.LinQuick;
 using TaleWorlds.MountAndBlade;
 
 namespace BLTAdoptAHero
@@ -30,52 +31,100 @@ namespace BLTAdoptAHero
         {
             this.isPlayerParticipating = isPlayerParticipating;
             SetPlaceholderPrize(tournamentGame);
+
         }
+        private readonly HashSet<Agent> ammoDone = new();
+
+        public override void OnMissionTick(float dt)
+        {
+            var n = BLTAdoptAHeroModule.TournamentConfig.RangedAmmoCount;
+            if (n <= 0) return;
+
+            var m = MissionState.Current?.CurrentMission;
+            var tb = m?.GetMissionBehavior<TournamentBehavior>();
+            if (tb?.CurrentMatch == null) return;
+
+            foreach (var a in m.Agents)
+            {
+                if (a == null || !a.IsHuman || a.IsMount) continue;
+                if (!ammoDone.Add(a)) continue;
+
+                bool firstAmmoDone = false;
+
+                for (var i = EquipmentIndex.Weapon0; i <= EquipmentIndex.Weapon3; i++)
+                {
+                    var mw = a.Equipment[i];
+                    if (mw.IsEmpty) continue;
+                    var ui = mw.CurrentUsageItem;
+                    if (ui == null || !ui.IsConsumable) continue;
+
+                    if (!firstAmmoDone)
+                    {
+                        a.SetWeaponAmountInSlot(i, (short)n, true);
+                        firstAmmoDone = true;
+                    }
+                    else
+                    {
+                        a.SetWeaponAmountInSlot(i, 0, true);
+                    }
+                }
+            }
+        }
+
+        private HashSet<CharacterObject> copiedHeroes = new();
 
         public List<CharacterObject> GetParticipants()
         {
             var tournamentQueue = BLTTournamentQueueBehavior.Current.TournamentQueue;
-
             var participants = new List<CharacterObject>();
             if (isPlayerParticipating)
                 participants.Add(Hero.MainHero.CharacterObject);
 
-            int viewersToAddCount = Math.Min(16 - participants.Count, tournamentQueue.Count);
+            int remainingSlots = 16 - participants.Count;
 
-            var viewersToAdd = tournamentQueue.Take(viewersToAddCount).ToList();
-            participants.AddRange(viewersToAdd.Select(q => q.Hero.CharacterObject));
-            activeTournament.AddRange(viewersToAdd);
-            tournamentQueue.RemoveRange(0, viewersToAddCount);
-
-            var basicTroops = CampaignHelpers.AllCultures
-                .SelectMany(c => new[] { c.BasicTroop, c.EliteBasicTroop })
-                .Where(t => t != null)
-                .ToList();
-
-            while (participants.Count < 16)
+            if (BLTAdoptAHeroModule.TournamentConfig.AddBltCopies && remainingSlots > 0)
             {
-                participants.Add(basicTroops.SelectRandom());
+                var notSignedUp = BLTAdoptAHeroCampaignBehavior.GetAllAdoptedHeroes()
+                    .Where(h => !tournamentQueue.Any(q => q.Hero == h))
+                    .ToList();
+
+                var toAdd = notSignedUp.Shuffle().Take(remainingSlots).ToList();
+                foreach (var hero in toAdd)
+                {
+                    participants.Add(hero.CharacterObject);
+                    copiedHeroes.Add(hero.CharacterObject);
+                }
+
+                remainingSlots = 16 - participants.Count;
             }
 
-            TournamentHub.UpdateEntrants();
-
-            foreach (var hero in viewersToAdd.Select(v => v.Hero))
+            if (remainingSlots > 0)
             {
-                int tournamentWins = BLTAdoptAHeroCampaignBehavior.Current.GetAchievementTotalStat(hero,
-                    AchievementStatsData.Statistic.TotalTournamentFinalWins);
-                if (tournamentWins > 0)
+                var viewersToAdd = tournamentQueue.Take(remainingSlots).ToList();
+                participants.AddRange(viewersToAdd.Select(q => q.Hero.CharacterObject));
+                activeTournament.AddRange(viewersToAdd);
+                tournamentQueue.RemoveRange(0, viewersToAdd.Count);
+
+                remainingSlots = 16 - participants.Count;
+            }
+
+            if (remainingSlots > 0)
+            {
+                var basicTroops = CampaignHelpers.AllCultures
+                    .SelectMany(c => new[] { c.BasicTroop, c.EliteBasicTroop })
+                    .Where(t => t != null)
+                    .ToList();
+
+                while (participants.Count < 16)
                 {
-                    var debuffs = BLTAdoptAHeroModule.TournamentConfig.PreviousWinnerDebuffs
-                        .Select(d => d.ToModifier(tournamentWins)).ToList();
-                    if (debuffs.Any())
-                    {
-                        BLTAgentStatCalculateModel.Current.AddModifiers(hero, debuffs);
-                    }
+                    participants.Add(basicTroops.SelectRandom());
                 }
             }
 
+            TournamentHub.UpdateEntrants();
             return participants;
         }
+
 
         private static int GetModifiedSkill(Hero hero, SkillObject skill, int baseModifiedSkill)
         {
@@ -111,6 +160,14 @@ namespace BLTAdoptAHero
                         .Where(e => e != EquipmentType.None)
                 ));
         }
+        private static bool IsRangedItem(ItemObject it)
+        {
+            if (it == null) return false;
+            if (it.ItemType == ItemObject.ItemTypeEnum.Arrows || it.ItemType == ItemObject.ItemTypeEnum.Bolts || it.ItemType == ItemObject.ItemTypeEnum.Thrown) return true;
+            var w = it.PrimaryWeapon;
+            return w != null && w.IsRangedWeapon;
+        }
+
 
         private void GetTeamWeaponEquipmentListPostfixImpl(List<Equipment> equipments)
         {
@@ -125,79 +182,57 @@ namespace BLTAdoptAHero
 
             if (BLTAdoptAHeroModule.TournamentConfig.RandomizeWeaponTypes)
             {
-                // Basic intention of this bit of code:
-                // Each equipment set has a set of skills associated with it.
-                // Each participant has a set of skills associated with their class.
-                // Randomly select tournament equipment set weighted by how well it matches the participants skills.
+                var tb = MissionState.Current.CurrentMission.GetMissionBehavior<TournamentBehavior>();
 
-                var tournamentBehavior = MissionState.Current.CurrentMission.GetMissionBehavior<TournamentBehavior>();
-
-                // Get all equipment sets, and their associated skills
-                var availableEquipment = GetAllTournamentEquipment()
-                    .Select(e => (
-                        e.equipment,
-                        skills: SkillGroup.GetSkills(SkillGroup.GetSkillsForEquipmentType(e.types).Distinct().ToList())))
-                    // Exclude spears (defined as non-swingable polearms) if the config mandates it
-                    .Where(e => !BLTAdoptAHeroModule.TournamentConfig.NoSpears
-                                || e.equipment.YieldWeaponSlots()
-                                    .All(s => s.element.Item?.Type != ItemObject.ItemTypeEnum.Polearm
-                                              || s.element.Item.IsSwingable()))
+                var avail = GetAllTournamentEquipment()
+                    .Select(x => (x.equipment, skills: SkillGroup.GetSkills(SkillGroup.GetSkillsForEquipmentType(x.types).Distinct().ToList())))
+                    .Where(x => !BLTAdoptAHeroModule.TournamentConfig.NoSpears
+                                || x.equipment.YieldWeaponSlots().All(s => s.element.Item?.Type != ItemObject.ItemTypeEnum.Polearm || s.element.Item.IsSwingable()))
+                    .Where(x => !BLTAdoptAHeroModule.TournamentConfig.NoRanged
+                                || x.equipment.YieldWeaponSlots().All(s => !IsRangedItem(s.element.Item)))
                     .ToList();
 
-                // Get the skill sets of the participating adopted heroes, by class
-                var participantSkills = tournamentBehavior.CurrentMatch.Participants
-                    // Get all the participating adopted heroes only
+                var pSkills = tb.CurrentMatch.Participants
                     .Select(p => p.Character.HeroObject).Where(h => h?.IsAdopted() == true)
-                    // Get the heroes associated class equipment
-                    .Select(h => h.GetClass()?.WeaponSkills.ToList()).Where(s => s != null)
-                    .ToList();
+                    .Select(h => h.GetClass()?.WeaponSkills.ToList()).Where(s => s != null).ToList();
 
-                // Select for each participant a random equipment set that closely matches theirs, then randomly select
-                // from between those sets
-                var tournamentSet = participantSkills
+                var set = pSkills
                     .Select(p => (
-                        equipment: availableEquipment
-                            .Shuffle()
-                            // Ordering based on number of matching skills between the two sets, then by mismatching skills (quite rough...)
-                            .OrderByDescending(e => e.skills.Intersect(p).Count() * 20 - e.skills.Except(p).Count())
-                            .FirstOrDefault().equipment,
-                        weight: 7f / participantSkills.Count)
-                    )
-                    // Add 2 random sets for some variety
-                    .Concat(availableEquipment.Shuffle().Take(2).Select(e => (equipment: e.equipment, weight: 1f)))
-                    // Add an unarmed set for some fun
-                    .Concat((equipment: new Equipment(), weight: 0.5f).Yield())
-                    // Select a random one
-                    .SelectRandomWeighted(e => e.weight)
-                    .equipment;
+                        equipment: avail.Shuffle().OrderByDescending(e => e.skills.Intersect(p).Count() * 20 - e.skills.Except(p).Count()).FirstOrDefault().equipment,
+                        weight: 7f / pSkills.Count
+                    ))
+                    .Concat(avail.Shuffle().Take(2).Select(e => (equipment: e.equipment, weight: 1f)))
+                    .Concat(BLTAdoptAHeroModule.TournamentConfig.NoFists ? Enumerable.Empty<(Equipment equipment, float weight)>() : (equipment: new Equipment(), weight: 0.5f).Yield())
+                    .SelectRandomWeighted(e => e.weight).equipment;
 
-                MissionState.Current.CurrentMission
-                    .GetMissionBehavior<BLTTournamentSkillAdjustBehavior>()
-                    .UnarmedRound = tournamentSet.IsEmpty();
+                MissionState.Current.CurrentMission.GetMissionBehavior<BLTTournamentSkillAdjustBehavior>().UnarmedRound = set.IsEmpty();
 
                 foreach (var e in equipments)
-                {
-                    foreach (var (_, index) in e.YieldWeaponSlots())
-                    {
-                        e[index] = tournamentSet[index];
-                    }
-                }
+                    foreach (var (_, idx) in e.YieldWeaponSlots())
+                        e[idx] = set[idx];
             }
             else if (BLTAdoptAHeroModule.TournamentConfig.NoSpears)
             {
-                var replacementWeapon = CampaignHelpers.AllItems
-                    .FirstOrDefault(i => i.StringId == "empire_sword_1_t2_blunt");
-                if (replacementWeapon != null)
+                var repl = CampaignHelpers.AllItems.FirstOrDefault(i => i.StringId == "empire_sword_1_t2_blunt");
+                if (repl != null)
                 {
                     foreach (var e in equipments)
+                        foreach (var (el, idx) in e.YieldWeaponSlots())
+                            if (el.Item?.Type == ItemObject.ItemTypeEnum.Polearm && !el.Item.IsSwingable())
+                                e[idx] = new EquipmentElement(repl);
+                }
+            }
+
+            if (BLTAdoptAHeroModule.TournamentConfig.NoRanged || BLTAdoptAHeroModule.TournamentConfig.NoFists)
+            {
+                foreach (var e in equipments)
+                {
+                    foreach (var (el, idx) in e.YieldWeaponSlots().ToList())
                     {
-                        foreach (var (element, index) in e.YieldWeaponSlots())
-                        {
-                            if (element.Item?.Type == ItemObject.ItemTypeEnum.Polearm && !element.Item.IsSwingable())
-                            {
-                                e[index] = new(replacementWeapon);
-                            }
-                        }
+                        if (BLTAdoptAHeroModule.TournamentConfig.NoRanged && IsRangedItem(el.Item))
+                            e[idx] = EquipmentElement.Invalid;
+                        else if (BLTAdoptAHeroModule.TournamentConfig.NoFists && el.Item == null)
+                            e[idx] = EquipmentElement.Invalid;
                     }
                 }
             }
@@ -296,6 +331,7 @@ namespace BLTAdoptAHero
             }
 
             activeTournament.Clear();
+            copiedHeroes.Clear();
         }
 
         private void EndCurrentMatchPrefixImpl(TournamentBehavior tournamentBehavior)
@@ -334,46 +370,51 @@ namespace BLTAdoptAHero
                 float actualBoost = entry.IsSub ? Math.Max(BLTAdoptAHeroModule.CommonConfig.SubBoost, 1) : 1;
 
                 var results = new List<string>();
-                if (tournamentBehavior.LastMatch.Winners.Any(w => w.Character?.HeroObject == entry.Hero))
+                if (!copiedHeroes.Contains(entry.Hero.CharacterObject))
                 {
-                    int actualGold = (int)(rewards.WinGold * actualBoost);
-                    if (actualGold > 0)
+                    if (tournamentBehavior.LastMatch.Winners.Any(w => w.Character?.HeroObject == entry.Hero))
                     {
-                        BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(entry.Hero, actualGold);
-                        results.Add($"{Naming.Inc}{actualGold}{Naming.Gold}");
-                    }
-                    int xp = (int)(rewards.WinXP * actualBoost);
-                    if (xp > 0)
-                    {
-                        (bool success, string description) =
-                            SkillXP.ImproveSkill(entry.Hero, xp, SkillsEnum.All, auto: true);
-                        if (success)
+                        int actualGold = (int)(rewards.WinGold * actualBoost);
+                        if (actualGold > 0)
                         {
-                            results.Add(description);
+                            BLTAdoptAHeroCampaignBehavior.Current.ChangeHeroGold(entry.Hero, actualGold);
+                            results.Add($"{Naming.Inc}{actualGold}{Naming.Gold}");
                         }
-                    }
-                    BLTAdoptAHeroCampaignBehavior.Current.IncreaseTournamentRoundWins(entry.Hero);
-                }
-                else if (tournamentBehavior.LastMatch.Participants.Any(w => w.Character?.HeroObject == entry.Hero))
-                {
-                    int xp = (int)(rewards.LoseXP * actualBoost);
-                    if (xp > 0)
-                    {
-                        (bool success, string description) =
-                            SkillXP.ImproveSkill(entry.Hero, xp, SkillsEnum.All, auto: true);
-                        if (success)
+                        int xp = (int)(rewards.WinXP * actualBoost);
+                        if (xp > 0)
                         {
-                            results.Add(description);
+                            (bool success, string description) =
+                                SkillXP.ImproveSkill(entry.Hero, xp, SkillsEnum.All, auto: true);
+                            if (success)
+                            {
+                                results.Add(description);
+                            }
                         }
+                        BLTAdoptAHeroCampaignBehavior.Current.IncreaseTournamentRoundWins(entry.Hero);
                     }
-                    BLTAdoptAHeroCampaignBehavior.Current.IncreaseTournamentRoundLosses(entry.Hero);
+                    else if (tournamentBehavior.LastMatch.Participants.Any(w => w.Character?.HeroObject == entry.Hero))
+                    {
+                        int xp = (int)(rewards.LoseXP * actualBoost);
+                        if (xp > 0)
+                        {
+                            (bool success, string description) =
+                                SkillXP.ImproveSkill(entry.Hero, xp, SkillsEnum.All, auto: true);
+                            if (success)
+                            {
+                                results.Add(description);
+                            }
+                        }
+                        BLTAdoptAHeroCampaignBehavior.Current.IncreaseTournamentRoundLosses(entry.Hero);
+                    }
                 }
+
                 if (results.Any())
                 {
                     Log.LogFeedResponse(entry.Hero.FirstName.ToString(), results.ToArray());
                 }
             }
 
+            ammoDone.Clear();
             MissionInfoHub.Clear();
         }
 

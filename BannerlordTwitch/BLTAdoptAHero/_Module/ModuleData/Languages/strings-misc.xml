@@ -430,5 +430,21 @@
         <string id="bNX0NiQ9" text="sold {ItemName} for {ItemValue}{GoldIcon} (not needed)"/>
         <!-- received {ItemName} (put in storage) -->
         <string id="R7VwlLzg" text="received {ItemName} (put in storage)"/>
+		<!-- Auto Summon Settings -->
+		<string id="BLTautoSummon" text="Auto Summon"/>
+		<string id="BLTautoSummonSettings" text="Auto Summon Settings"/>
+		<string id="BLTautoSummonDesc" text="Settings for automatic hero summoning"/>
+		<string id="BLTsummonAllHeroes" text="Summon All Heroes"/>
+		<string id="BLTsummonAllHeroesDesc" text="Automatically summon all adopted heroes at battle start"/>
+		<string id="BLTsummonSpecificHeroes" text="Summon Specific Heroes"/>
+		<string id="BLTsummonSpecificHeroesDesc" text="Automatically summon only selected heroes"/>
+		<string id="BLTheroesToSummon" text="Heroes To Summon"/>
+		<string id="BLTheroesToSummonDesc" text="Comma-separated list of hero names to auto-summon (if 'Summon Specific Heroes' is enabled)"/>
+		<!--
+        <string id="BLTresummonOnDeath" text="Re-summon On Death"/>
+        <string id="BLTresummonOnDeathDesc" text="Automatically re-summon heroes if they die during battle"/>
+        <string id="BLTautoUseUltimate" text="Auto Use Ultimate"/>
+        <string id="BLTautoUseUltimateDesc" text="Automatically use ultimate ability for summoned heroes"/>
+        -->
     </strings>
 </base>

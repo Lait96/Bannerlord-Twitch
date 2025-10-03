@@ -500,7 +500,7 @@
         <!-- Loaded v{ModVersion} -->
         <string id="45Q44kgm" text="Загружен v{ModVersion}" original="Loaded v{ModVersion}"/>
         <!-- Action Manager initialized -->
-        <string id="5G73vqNS" text="Менеджер действий инициализирован" original="Action Manager initialized"/>
+        <string id="5G73vqNS" text="💛Огромное спасибо LaitRu и Sup_stark!!!💛" original="Action Manager initialized"/>
         <!-- Bannerlord Twitch Mod WARNING -->
         <string id="PhRzCo9t" text="Bannerlord Twitch Mod ВНИМАНИЕ" original="Bannerlord Twitch Mod WARNING"/>
         <!-- You have auto save disabled, crashes could result in lost channel points!\nRecommended you set it to 15 minutes or less. -->
